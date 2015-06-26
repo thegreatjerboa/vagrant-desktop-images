@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Specify Vagrant version and Vagrant API version
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
+# ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+
+# Create and configure the Docker container(s)
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # config.vm.box = "precise64"
+  # config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.vm.define "syncthing" do |app|
+    app.vm.provider "docker" do |d|
+      d.image = "istepanov/syncthing"
+      d.name = "syncthing"
+      d.ports = ["8384:8384"]      
+      d.vagrant_vagrantfile = "host/Vagrantfile"
+      d.vagrant_machine = "docker_host"
+    end
+  end
+end

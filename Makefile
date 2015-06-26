@@ -2,7 +2,7 @@
 
 stamp := $(shell date +%s)
 
-all: precise quantal raring saucy trusty
+all: precise quantal raring saucy trusty vivid
 	@true
 
 %: %-desktop-i386.box
@@ -27,3 +27,4 @@ launch-%:
 	cd $*-$(stamp) && vagrant up
 
 .SECONDARY:
+

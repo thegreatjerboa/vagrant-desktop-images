@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
 
-  [:precise, :quantal, :raring, :saucy, :trusty].each do |release|
+  [:precise, :quantal, :raring, :saucy, :trusty :vivid].each do |release|
     config.vm.define release do |conf|
       conf.vm.box = "#{release}-cloud-i386"
       conf.vm.box_url = "./#{release}-server-cloudimg-i386-vagrant-disk1.box"
